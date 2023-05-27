@@ -11,14 +11,18 @@ import json
 import re
 import requests
 import execjs
-
+import shlex
+import sys
 
 cookies = {}
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36"
 }
 #url = "https://www.mps.gov.cn/index.html"
-url = "https://www.cnvd.org.cn/patchInfo/show/429181"
+url2 = "https://www.cnvd.org.cn/patchInfo/show/429181"
+url = cmdline = " ".join(map(shlex.quote, sys.argv[1:]))
+
+
 
 def get_first_cookie():
     global cookies
